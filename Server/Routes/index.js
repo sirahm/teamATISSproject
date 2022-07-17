@@ -8,5 +8,9 @@ const router = express_1.default.Router();
 const index_1 = require("../Controllers/index");
 router.get('/', index_1.DisplayHomePage);
 router.get('/home', index_1.DisplayHomePage);
+router.get('/createMC', index_1.DisplayCreateMCPage);
+router.get('/createTF', index_1.DisplayCreateTFPage);
+router.get('/createSA', index_1.DisplayCreateSAPage);
+
 exports.default = router;
 //# sourceMappingURL=index.js.map
