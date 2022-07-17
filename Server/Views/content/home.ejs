@@ -2,7 +2,18 @@
     <div class="center">
         <h2>Welcome to Ask.Me</h2><br>
         <h4>In our website you can take a pre-existing survey<br>or create your own survey</h4><br>
-        <button class="button">Begin Survey</button><br><br>
-        <button class="button">Create Survey</button>
-    </div> 
+
+        <form>
+            <p>Please select type of survey:</p>
+            <input type="radio" id="MC" name="survey" value="MC">
+            <label for="mc">MC</label>
+            <input type="radio" id="TF" name="survey" value="TF">
+            <label for="tf">TF</label>
+            <input type="radio" id="SA" name="survey" value="SA">
+            <label for="sa">SA</label>
+        </form><br>
+
+        <button class="btn btn-success" id="create">Create Survey</button><br><br>
+        <button class="btn btn-success" id="survey">Begin Survey</button>
+    </div>
 </body>
