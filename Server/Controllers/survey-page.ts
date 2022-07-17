@@ -2,13 +2,17 @@ import express from 'express';
 import { CallbackError } from 'mongoose';
 
 // import the Movie Model
-import Movie from '../Models/movie';
-
+import Survey from '../Models/survey';
+import Question from '../Models/question';
+import Option from '../Models/option';
+import Response from '../Models/response';
 import { UserDisplayName  } from '../Util';
+import { create } from 'domain';
+import { randomBytes } from 'crypto';
 
-export function DisplayMovieListPage(req: express.Request, res: express.Response, next: express.NextFunction): void 
+export function DisplaySurveyPage(req: express.Request, res: express.Response, next: express.NextFunction): void 
 {
-    Movie.find(function(err, moviesCollection)
+    Survey.find(function(err, surveysCollection)
     {
       // Database error
       if(err)
@@ -16,13 +20,13 @@ export function DisplayMovieListPage(req: express.Request, res: express.Response
         console.error(err.message);
         res.end(err);
       }
-      res.render('index', { title: 'Movie List', page: 'movie-list', movies: moviesCollection, displayName:  UserDisplayName(req)  });
+      res.render('index', { title: 'Survey', page: 'survey-page', surveys: surveysCollection, displayName:  UserDisplayName(req)  });
     });
 }
 
 export function DisplayAddPage(req: express.Request, res: express.Response, next: express.NextFunction): void 
 {
-  res.render('index', { title: 'Add', page: 'edit', movie: '', displayName:  UserDisplayName(req) })
+  res.render('index', { title: 'Add', page: 'edit', survey: '', displayName:  UserDisplayName(req) })
 }
 
 export function DisplayEditPage(req: express.Request, res: express.Response, next: express.NextFunction): void 
@@ -30,7 +34,7 @@ export function DisplayEditPage(req: express.Request, res: express.Response, nex
   let id = req.params.id;
 
   // pass the id to the db and read the movie into the edit page
-  Movie.findById(id, {}, {}, function(err, movieToEdit)
+  Survey.findById(id, {}, {}, function(err, surveyToEdit)
   {
     if(err)
     {
@@ -39,23 +43,24 @@ export function DisplayEditPage(req: express.Request, res: express.Response, nex
     }
 
     // show the edit view with the data
-    res.render('index', { title: 'Edit', page: 'edit', movie: movieToEdit, displayName:  UserDisplayName(req) })
+    res.render('index', { title: 'Edit', page: 'edit', survey: surveyToEdit, displayName:  UserDisplayName(req) })
   });
 }
 
 export function ProcessAddPage(req: express.Request, res: express.Response, next: express.NextFunction): void 
 {
   // instantiate a new Movie to Add
-  let newMovie = new Movie
+  let newSurvey = new Survey
   ({
-    "Name": req.body.movieName,
-    "Director": req.body.movieDirector,
-    "Year": req.body.movieYear,
-    "Rating": req.body.movieRating
+    "Name": req.body.surveyName,
+    "Owner": req.body.ownerName,
+    "QuestionsArray": req.body.questionsArray,
+    "StartDate": req.body.startDate,
+    "EndDate": req.body.endDate
   });
 
   // Insert the new Movie object into the database (movies collection)
-  Movie.create(newMovie, function(err: CallbackError)
+  Survey.create(newSurvey, function(err: CallbackError)
   {
     if(err)
     {
@@ -64,7 +69,7 @@ export function ProcessAddPage(req: express.Request, res: express.Response, next
     }
 
     // new movie has been added -> refresh the movie-list
-    res.redirect('/movie-list');
+    res.redirect('/survey-page');
   })
 }
 
@@ -73,17 +78,18 @@ export function ProcessEditPage(req: express.Request, res: express.Response, nex
   let id = req.params.id;
 
   // instantiate a new Movie to Edit
-  let updatedMovie = new Movie
+  let updatedSurvey = new Survey
   ({
     "_id": id,
-    "Name": req.body.movieName,
-    "Director": req.body.movieDirector,
-    "Year": req.body.movieYear,
-    "Rating": req.body.movieRating
+    "Name": req.body.surveyName,
+    "Owner": req.body.ownerName,
+    "QuestionsArray": req.body.questionsArray,
+    "StartDate": req.body.startDate,
+    "EndDate": req.body.endDate
   });
 
   // update the movie in the database
-  Movie.updateOne({_id: id}, updatedMovie, function(err: CallbackError)
+Survey.updateOne({_id: id}, updatedSurvey, function(err: CallbackError)
   {
     if(err)
     {
@@ -92,7 +98,7 @@ export function ProcessEditPage(req: express.Request, res: express.Response, nex
     }
 
     // edit was successful -> go to the movie-list page
-    res.redirect('/movie-list');
+    res.redirect('/survey-page');
   });
 }
 
@@ -101,7 +107,7 @@ export function ProcessDeletePage(req: express.Request, res: express.Response, n
   let id = req.params.id;
 
   // pass the id to the database and delete the movie
-  Movie.remove({_id: id}, function(err: CallbackError)
+  Survey.remove({_id: id}, function(err: CallbackError)
   {
     if(err)
     {
@@ -110,6 +116,6 @@ export function ProcessDeletePage(req: express.Request, res: express.Response, n
     }
 
     // delete was successful
-    res.redirect('/movie-list');
+    res.redirect('/survey-page');
   });
 }

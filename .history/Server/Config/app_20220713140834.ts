@@ -24,7 +24,7 @@ import User from '../Models/user';
 
 // import router data from the router module(s)
 import indexRouter from '../Routes/index'; 
-import surveyPageRouter from '../Routes/survey-page';
+import movieListRouter from '../Routes/movie-list';
 import authRouter from '../Routes/auth';
 
 // create the application object - which is of type express
@@ -82,7 +82,7 @@ passport.deserializeUser(User.deserializeUser());
 
 // add routing 
 app.use('/', indexRouter);
-app.use('/', surveyPageRouter);
+app.use('/', movieListRouter);
 app.use('/', authRouter);
 
 // catch 404 and forward to error handler
