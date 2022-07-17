@@ -1,13 +1,22 @@
 import express from 'express';
 const router = express.Router();
 
-import { DisplayHomePage } from '../Controllers/index';
+import { DisplayCreateMCPage, DisplayCreateTFPage, DisplayCreateSAPage, DisplayHomePage } from '../Controllers/index';
 
-/* Display home page. */
+
 router.get('/', DisplayHomePage);
 
-/* Display home page. */
+
 router.get('/home', DisplayHomePage);
+
+
+router.get('/createMC', DisplayCreateMCPage);
+
+
+router.get('/createTF', DisplayCreateTFPage);
+
+
+router.get('/createSA', DisplayCreateSAPage);
 
 
 export default router;
