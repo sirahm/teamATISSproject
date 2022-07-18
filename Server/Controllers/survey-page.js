@@ -44,7 +44,7 @@ function ProcessAddPage(req, res, next) {
             console.error(err);
             res.end(err);
         }
-        res.redirect('/login');
+        res.redirect('/survey-page');
     });
 }
 exports.ProcessAddPage = ProcessAddPage;
@@ -63,7 +63,7 @@ function ProcessEditPage(req, res, next) {
             console.error(err);
             res.end(err);
         }
-        res.redirect('/login');
+        res.redirect('/survey-page');
     });
 }
 exports.ProcessEditPage = ProcessEditPage;
@@ -74,7 +74,7 @@ function ProcessDeletePage(req, res, next) {
             console.error(err);
             res.end(err);
         }
-        res.redirect('/login');
+        res.redirect('/survey-page');
     });
 }
 exports.ProcessDeletePage = ProcessDeletePage;
@@ -401,7 +401,7 @@ function ProcessCreateMCPage(req, res, next) {
             console.error(err);
             res.end(err);
         }
-        res.redirect('/login');
+        res.redirect('/survey-page');
     });
 }
 exports.ProcessCreateMCPage = ProcessCreateMCPage;
@@ -638,7 +638,7 @@ function ProcessCreateSAPage(req, res, next) {
             console.error(err);
             res.end(err);
         }
-        res.redirect('/login');
+        res.redirect('/survey-page');
     });
 }
 exports.ProcessCreateSAPage = ProcessCreateSAPage;

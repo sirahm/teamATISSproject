@@ -21,3 +21,8 @@ export function DisplayCreateSAPage(req: express.Request, res: express.Response,
 {
     res.render('index', { title: 'Create Simple Answer Question', page: 'createSA', displayName: UserDisplayName(req)  });
 }
+
+export function ProcessCreateTFPage(req: express.Request, res: express.Response, next: express.NextFunction) 
+{
+    res.render('login', { title: 'Create True/False Question', page: 'createTF', displayName: UserDisplayName(req)  });
+}

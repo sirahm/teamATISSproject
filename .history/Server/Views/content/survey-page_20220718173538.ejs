@@ -1,0 +1,37 @@
+<div class="container">
+    <h1>Survey List</h1>
+
+    <div class="row">
+        <div class="col">
+
+            <a href="/home" id="addButton" class="btn btn-primary mb-1"><i class="fa-solid fa-circle-plus"></i> Add Survey</a>
+    
+            <table class="table table-striped table-bordered table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col" class="text-center">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Owner</th>
+                        
+                        <!-- <th></th>
+                        <th></th> -->
+                    </tr>
+                </thead>
+                <tbody id="surveyList">
+                    <!-- Repeatable Rows -->
+                    <% for(let count = 0; count < surveys.length; count++) { %>
+                        <!-- Create a new Table Row-->
+                        <tr>
+                            <th scope="row" class="text-center"><%= count + 1 %></th>
+                            <td><%= surveys[count].surveyName %></td>
+                            <td><%= surveys[count].OwnerID %></td>
+                            
+                            <!-- <td class="text-center"><a href="/edit/" class="btn btn-primary btn-sm edit"><i class="fa-solid fa-pen-to-square"></i> Edit</a></td>
+                            <td class="text-center"><a href="/delete/" class="btn btn-danger btn-sm delete"><i class="fa-solid fa-trash-can"></i> Delete</a></td> -->
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
