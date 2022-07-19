@@ -457,7 +457,7 @@ export function ProcessCreateMCPage(req: express.Request, res: express.Response,
                                                 ]
                                                 }
 
-                                              ]
+          ]
   });
 
   // Insert the new Movie object into the database (movies collection)

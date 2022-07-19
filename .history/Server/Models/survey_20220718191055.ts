@@ -9,23 +9,23 @@ const SurveySchema = new Schema
     SurveyName: String,
     SurveyType: String,
     Active: Boolean,
-    Questions:
-    
+    Questions: 
+    [
     {
         QuestionID: String,
         QuestionType: String,
         QuestionText : String,
         Options:
-        
+        [
             {
                 OptionID: String,
                 OptionText: String,
                 OptionValue: Number,
                 QuestionID: String
             }
-        
+        ]
           }
-        
+        ]
 },
 {
     collection: "surveys"

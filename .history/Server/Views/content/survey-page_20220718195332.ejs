@@ -36,3 +36,8 @@
     </div>
 </div>
 
+<% if(surveys[count].Questions.QuestionType == "Multiple") { %>
+    <td class="text-center"><a href="/editMC/<%= surveys[count]._id %>" class="btn btn-primary btn-sm edit" id="edd"><i class="fa-solid fa-pen-to-square"></i> Edit</a></td>
+    <% } else {%>
+    <button id="addButton" type="submit" class="btn btn-primary"><i class="fas fa-plus-circle fa-lg"></i> Add</button>
+    <% } %>  

@@ -12,9 +12,9 @@
                         <th scope="col" class="text-center">#</th>
                         <th scope="col">Survey Name</th>
                         <th scope="col">Owner</th>
-                        <th scope="col">Type</th>
-                        <th></th>
-                        <th></th>
+                        
+                        <!-- <th></th>
+                        <th></th> -->
                     </tr>
                 </thead>
                 <tbody id="surveyList">
@@ -25,9 +25,9 @@
                             <th scope="row" class="text-center"><%= count + 1 %></th>
                             <td><%= surveys[count].SurveyName %></td>
                             <td><%= surveys[count].OwnerID %></td>
-                            <td><%= surveys[count].Questions.QuestionType %></td>
-                            <td class="text-center"><a href="/editMC/<%= surveys[count]._id %>" class="btn btn-primary btn-sm edit" id="edd"><i class="fa-solid fa-pen-to-square"></i> Edit</a></td>
-                            <td class="text-center"><a href="/delete/<%= surveys[count]._id %>" class="btn btn-danger btn-sm delete"><i class="fa-solid fa-trash-can"></i> Delete</a></td> 
+                            
+                            <!-- <td class="text-center"><a href="/edit/" class="btn btn-primary btn-sm edit"><i class="fa-solid fa-pen-to-square"></i> Edit</a></td>
+                            <td class="text-center"><a href="/delete/" class="btn btn-danger btn-sm delete"><i class="fa-solid fa-trash-can"></i> Delete</a></td> -->
                         </tr>
                     <% } %>
                 </tbody>
@@ -35,4 +35,3 @@
         </div>
     </div>
 </div>
-

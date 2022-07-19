@@ -8,6 +8,7 @@ const Schema = mongoose_1.default.Schema;
 const SurveySchema = new Schema({
     OwnerID: String,
     SurveyName: String,
+    SurveyType: String,
     Active: Boolean,
     Questions: {
         QuestionID: String,
