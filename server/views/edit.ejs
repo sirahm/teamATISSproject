@@ -1,0 +1,68 @@
+<%- include partials/header.ejs %>
+
+    <%- include partials/main_nav.ejs %>
+
+    <!-- Content for the Edit page -->
+    <div class="container">
+        <div class="row">
+            <div class="offset-md-3 col-md-6">
+                <h1><%= title %></h1>
+
+                <form class="form" method="POST">
+                    <div class="form-group">
+                        <label for="SurveyID">Survey ID</label>
+                        <input type="number" class="form-control" id="SurveyID" placeholder="Enter the SurveyID"
+                            name="SurveyID" value="<%= SurveyList.SurveyID %>"
+                            required min="1" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="OwnerID">Owner ID</label>
+                        <input type="number" class="form-control" id="OwnerID"
+                            placeholder="Enter owners ID" name="OwnerID" value="<%= SurveyList.OwnerID %>"
+                            required min="1" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="SurveyName">Survey Name</label>
+                        <input type="text" class="form-control" id="SurveyName" placeholder="Enter the Name"
+                            name="SurveyName" value="<%= SurveyList.SurveyName %>"
+                            required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="StartDate">Start Date</label>
+                        <input type="datetime-local" class="form-control" id="StartDate"
+                            placeholder="Enter the Start Date" name="StartDate" value="<%= SurveyList.StartDate %>"
+                            required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="EndDate">End Date</label>
+                        <input type="datetime-local" class="form-control" id="EndDate" placeholder="Enter the End Date"
+                            name="EndDate" value="<%= SurveyList.EndDate %>"
+                            required />
+                    </div>
+
+                    <div class="form-check">
+                        <label class="form-check-label" for="priceTextField">Active</label>
+                        <input type="checkbox" class="form-check-input" id="priceTextField" placeholder="Set active status"
+                            name="Active" value="" <%= SurveyList.Active ? "checked" : "" %> >
+                    </div>
+
+                    <div class="mt-4">
+                        <button class="btn btn-primary" type="submit">
+                            <i class="fas fa-edit"></i> Submit</button>
+
+                        <a href="/survey" class="btn btn-warning">
+                            <i class="fas fa-undo"></i> Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <%- include partials/bottom_nav.ejs %>
+
+<%- include partials/footer.ejs %>
