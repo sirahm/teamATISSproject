@@ -2,60 +2,74 @@
 
   <%- include partials/main_nav.ejs %>
 
-  <!--Main content-->
-  <main class="container">
-    <div class="row">
+    <!--Main content-->
+    <main class="container">
+      <div class="row">
         <div class="offset-md-1 col-md-10">
-            <div class="px-4 py-4 my-4 text-center">
-                <h1 class="display-5 fw-bold"><%= title %></h1>
-            </div>
-            
-            <div class="mb-4">
-              <a href="/survey/add" class="btn btn-primary" role="button">
-                <i class="fas fa-plus-circle"></i> Add Survey</a>
-            </div>
+          <div class="px-4 py-4 my-4 text-center">
+            <h1 class="display-5 fw-bold">
+              <%= title %>
+            </h1>
+          </div>
 
-            <table class="table table-bordered table-striped table-hover" id="tableSurvey">
-                <!-- Header Row-->
-                <tr>
-                    <th class="text-center">Survey ID</th>
-                    <th class="text-center">Owner ID</th>
-                    <th class="text-center">Survey Name</th>
-                    <th class="text-center">Start Date</th>
-                    <th class="text-center">End Date</th>
-                    <th class="text-center">Active</th>
-                    <th></th>
-                    <th></th>
-                  
-                </tr>
+          <div class="mb-4">
+            <a href="/survey/add" class="btn btn-primary" role="button">
+              <i class="fas fa-plus-circle"></i> Add Survey</a>
+          </div>
 
-                <!-- Repeatable Template Row -->
-                <% for(let i = 0; i < SurveyList.length; i++) { %>
-                <tr>
-                  <td class="text-center"><%= SurveyList[i].SurveyID%></td>
-                  <td class="text-center"><%= SurveyList[i].OwnerID %></td>
-                  <td class="text-center"><%= SurveyList[i].SurveyName %></td>
-                  <td class="text-center"><%= SurveyList[i].StartDate %></td>
-                  <td class="text-center"><%= SurveyList[i].EndDate %></td>
-                  <td class="text-center"><%= SurveyList[i].Active %></td>
-                  <td class="text-center">
-                      <a href="/survey/edit/<%= SurveyList[i]._id %>" class="btn btn-primary btn-sm">
-                        <i class="fas fa-pencil-alt"></i> Edit</a>
-                    </td>
+          <table class="table table-bordered table-striped table-hover" id="tableSurvey">
+            <!-- Header Row-->
+            <tr>
 
-                    <td class="text-center">
-                      <a href="/survey/delete/<%= SurveyList[i]._id %>" class="btn btn-danger btn-sm">
-                        <i class="fas fa-trash-alt"></i> Delete</a>
-                    </td>
-                </tr>
-                <% } %>
-            </table>
+              <th class="text-center">Survey Name</th>
+              <th class="text-center">Start Date</th>
+              <th class="text-center">End Date</th>
+              <th class="text-center">Active</th>
+              <th class="text-center"></th>
+              <th></th>
+              <th></th>
+
+            </tr>
+
+            <!-- Repeatable Template Row -->
+            <% for(let i=0; i < SurveyList.length; i++) { %>
+              <tr>
+
+                <td class="text-center">
+                  <%= SurveyList[i].SurveyName %>
+                </td>
+                <td class="text-center">
+                  <%= SurveyList[i].StartDate %>
+                </td>
+                <td class="text-center">
+                  <%= SurveyList[i].EndDate %>
+                </td>
+                <td class="text-center">
+                  <%= SurveyList[i].Active %>
+                </td>
+                <td class="text-center">
+                  <a href="" class="btn btn-success">
+                    <i class="fa-solid fa-comment-check"></i>Answer Survey</a>
+                </td>
+
+                <td class="text-center">
+                  <a href="/survey/edit/<%= SurveyList[i]._id %>" class="btn btn-primary btn-sm">
+                    <i class="fas fa-pencil-alt"></i> Edit</a>
+                </td>
+
+                <td class="text-center">
+                  <a href="/survey/delete/<%= SurveyList[i]._id %>" class="btn btn-danger btn-sm">
+                    <i class="fas fa-trash-alt"></i> Delete</a>
+                </td>
+              </tr>
+              <% } %>
+          </table>
         </div>
-    </div>
-  </main>
+      </div>
+    </main>
 
 
 
-  <%- include partials/bottom_nav.ejs %>
+    <%- include partials/bottom_nav.ejs %>
 
-<%- include partials/footer.ejs %>
+      <%- include partials/footer.ejs %>
